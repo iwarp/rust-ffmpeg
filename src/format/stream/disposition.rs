@@ -2,6 +2,7 @@ use ffi::*;
 use libc::c_int;
 
 bitflags! {
+    #[derive(Copy, Clone, Debug, PartialEq, Eq)]
     pub struct Disposition: c_int {
         const DEFAULT          = AV_DISPOSITION_DEFAULT;
         const DUB              = AV_DISPOSITION_DUB;
@@ -17,5 +18,7 @@ bitflags! {
         const CAPTIONS         = AV_DISPOSITION_CAPTIONS;
         const DESCRIPTIONS     = AV_DISPOSITION_DESCRIPTIONS;
         const METADATA         = AV_DISPOSITION_METADATA;
+        #[cfg(feature = "ffmpeg_7_1")]
+        const MULTILAYER       = AV_DISPOSITION_MULTILAYER;
     }
 }
